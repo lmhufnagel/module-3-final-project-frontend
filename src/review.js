@@ -4,4 +4,10 @@ class Review {
     this.body = body
     this.hauntedHouseId = haunted_house_id
   }
+
+  function getReviews() {
+    fetch('http://localhost:3000/api/reviews')
+    .then(res => res.json())
+    .then(json => console.log(json))
+  }
 }

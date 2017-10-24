@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   getHouses()
 
 function getHouses() {
-  fetch('http://localhost:3000/haunted_houses')
+  fetch('http://localhost:3000/api/haunted_houses')
   .then(res => res.json())
   .then(json => renderHouses(json))
 }
@@ -44,6 +44,9 @@ function renderHouses(json) {
     reviewForm.appendChild(br3)
     reviewForm.appendChild(br4)
     reviewForm.appendChild(reviewSubmit)
+
+    const displayReviews = document.createElement('div')
+    // const reviewBody =
 
 
     newHouseDiv.appendChild(houseTitle)
