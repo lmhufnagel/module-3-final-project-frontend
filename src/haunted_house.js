@@ -1,6 +1,7 @@
 class HauntedHouse {
 
-  constructor(name, description, location, image){
+  constructor(id, name, description, location, image){
+    this.id = id
     this.name = name
     this.description = description
     this.location = location
