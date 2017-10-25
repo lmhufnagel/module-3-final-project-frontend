@@ -59,9 +59,9 @@ function renderHouses(json) {
 
     reviewForm.addEventListener('submit', e => {
       e.preventDefault()
-      fetch('http://localhost:3000/api/haunted_houses', {
+      fetch('http://localhost:3000/api/reviews', {
         method: "POST",
-        body: JSON.stringify({name: e.target[0].value, body: e.target[1].value, haunted_house_id: 0}),
+        body: JSON.stringify({name: e.target[0].value, body: e.target[1].value, haunted_house_id: reviewForm.dataset.id}),
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"
