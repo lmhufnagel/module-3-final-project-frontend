@@ -13,7 +13,8 @@ function getHouses() {
 function renderHouses(json) {
   json.forEach(house => {
 
-    const newHouse = new HauntedHouse(house.id, house.name, house.description, house.location, house.image)
+    const newHouse = new HauntedHouse(house.id, house.name, house.description, house.location, house.image, house.reviews)
+    console.log(newHouse.scareFactor())
     const newHouseDiv = document.createElement('div')
     newHouseDiv.setAttribute('id', `div-${newHouse.id}`)
 
@@ -64,8 +65,6 @@ function renderHouses(json) {
     reviewForm.appendChild(br4)
     reviewForm.appendChild(reviewSubmit)
 
-    // const displayReviews = document.createElement('div')
-    // const reviewBody =
 
     const showReviewsButton = document.createElement("button")
     showReviewsButton.innerText = "Reviews"
@@ -82,7 +81,6 @@ function renderHouses(json) {
           divPointer.appendChild(reviewtag)
         })
       })
-      showReviewsButton.style.display = 'none'
     })
 
     const iframeDiv = document.createElement('div')
@@ -117,14 +115,14 @@ function renderHouses(json) {
           "Content-Type": "application/json"
         }
     })
-      reviewForm.style.display = 'none'
+    reviewForm.style.display = "none"
     })
+
+    function avgRating(rating) {
+
+    }
 
   })
 
 }
-
 })
-
-
-// https://emojipedia.org/skull/
