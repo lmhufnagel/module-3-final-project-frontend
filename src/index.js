@@ -36,8 +36,7 @@ function renderHouses(json) {
     } else if (newHouse.scareFactor() === 4) {
       houseScareRating.innerHTML = `<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30">`
     } else if (newHouse.scareFactor() === 5) {
-      houseScareRating.innerHTML = `<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30">
-      <img src="stylesheets/skull2.png" width="30" height="30">`
+      houseScareRating.innerHTML = '<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30">'
     } else {
       houseScareRating.innerHTML = "This attraction has no rating yet! Be the first to write a review!"
     }
@@ -95,6 +94,7 @@ function renderHouses(json) {
           reviewtag.innerHTML = `${review.name} <br> ${review.body}`
           const divPointer = document.getElementById(`div-${reviewForm.dataset.id}`)
           divPointer.appendChild(reviewtag)
+          showReviewsButton.style.display = 'none'
         })
       })
     })
