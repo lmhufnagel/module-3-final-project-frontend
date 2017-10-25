@@ -12,7 +12,6 @@ function renderHouses(json) {
   json.forEach(house => {
 
     const newHouse = new HauntedHouse(house.id, house.name, house.description, house.location, house.image)
-    console.log(newHouse);
     const newHouseDiv = document.createElement('div')
 
     const houseTitle = document.createElement('h3')
@@ -37,8 +36,23 @@ function renderHouses(json) {
     const br2 = document.createElement('br')
     const br3 = document.createElement('br')
     const br4 = document.createElement('br')
+    const br5 = document.createElement('br')
     const reviewSubmit = document.createElement('input')
     reviewSubmit.setAttribute('type', 'submit')
+    const starSpan = document.createElement('span')
+    starSpan.setAttribute('class', 'rating')
+    starSpan.innerHTML = `<input id="house${newHouse.id}rating5" type="radio" name="rating" value="5">
+    <label for="house${newHouse.id}rating5">5</label>
+    <input id="house${newHouse.id}rating4" type="radio" name="rating" value="4">
+    <label for="house${newHouse.id}rating4">4</label>
+    <input id="house${newHouse.id}rating3" type="radio" name="rating" value="3">
+    <label for="house${newHouse.id}rating3">3</label>
+    <input id="house${newHouse.id}rating2" type="radio" name="rating" value="2" >
+    <label for="house${newHouse.id}rating2">2</label>
+    <input id="house${newHouse.id}rating1" type="radio" name="rating" value="1">
+    <label for="house${newHouse.id}rating1">1</label>`
+    reviewForm.appendChild(starSpan)
+    reviewForm.appendChild(br5)
     reviewForm.appendChild(nameInput)
     reviewForm.appendChild(br1)
     reviewForm.appendChild(br2)
@@ -56,8 +70,6 @@ function renderHouses(json) {
     const iframeURL = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCatqH_xgBBnxAdoAvlkNdLRdTz4Go8JxU&q=" + fixedLocation
 
     iframeDiv.innerHTML = `<iframe width="540" height="405" frameborder="0" style="border:0" src='${iframeURL}' allowfullscreen> </iframe>`
-    console.log(iframeDiv.innerHTML)
-
     newHouseDiv.appendChild(houseTitle)
     newHouseDiv.appendChild(houseImg)
     newHouseDiv.appendChild(houseDesc)
@@ -67,9 +79,17 @@ function renderHouses(json) {
 
     reviewForm.addEventListener('submit', e => {
       e.preventDefault()
+      let counter = 0
+      const targetArr = Array.from(e.target)
+      const ratingCounters = targetArr.slice(0,5)
+      ratingCounters.forEach(tinydot => {
+        if (tinydot.checked === true) {
+          counter = tinydot.value
+        }
+      })
       fetch('http://localhost:3000/api/reviews', {
         method: "POST",
-        body: JSON.stringify({name: e.target[0].value, body: e.target[1].value, haunted_house_id: reviewForm.dataset.id}),
+        body: JSON.stringify({name: e.target[5].value, body: e.target[6].value, rating: counter, haunted_house_id: reviewForm.dataset.id}),
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json"
@@ -85,3 +105,6 @@ function renderHouses(json) {
 }
 
 })
+
+
+// https://emojipedia.org/skull/
