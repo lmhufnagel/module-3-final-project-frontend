@@ -82,6 +82,7 @@ function renderHouses(json) {
           divPointer.appendChild(reviewtag)
         })
       })
+      showReviewsButton.style.display = 'none'
     })
 
     const iframeDiv = document.createElement('div')
@@ -116,43 +117,11 @@ function renderHouses(json) {
           "Content-Type": "application/json"
         }
     })
-    e.target[0].value = ""
-    e.target[1].value = ""
+      reviewForm.style.display = 'none'
     })
 
-// <button onclick="toggleClock()" id="clockButton">Show clock</button>
   })
-//   showReviewsButton.addEventListener('click', e => displayReviews())
-//
-// function displayReviews() {
-//
-//   fetch(`http://localhost:3000/api/${reviewForm.dataset.id}`)
-//   .then(res => res.json())
-//   .then(json => )
-//
-//     // get the clock
-//     const allReviews = ;
-//
-//     // get the current value of the clock's display property
-//     var displaySetting = myClock.style.display;
-//
-//     // also get the clock button, so we can change what it says
-//     var clockButton = document.getElementById('clockButton');
-//
-//     // now toggle the clock and the button text, depending on current state
-//     if (displaySetting == 'block') {
-//       // clock is visible. hide it
-//       myClock.style.display = 'none';
-//       // change button text
-//       clockButton.innerHTML = 'Show clock';
-//     }
-//     else {
-//       // clock is hidden. show it
-//       myClock.style.display = 'block';
-//       // change button text
-//       clockButton.innerHTML = 'Hide clock';
-//     }
-//   }
+
 }
 
 })
