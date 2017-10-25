@@ -1,5 +1,6 @@
 class Review {
-  constructor(name, body, haunted_house_id){
+  constructor(id, name, body, haunted_house_id){
+    this.id = id
     this.name = name
     this.body = body
     this.hauntedHouseId = haunted_house_id
@@ -10,4 +11,8 @@ class Review {
     .then(res => res.json())
     .then(json => console.log(json))
   }
+
+  
+
+
 }
