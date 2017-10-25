@@ -27,6 +27,8 @@ function renderHouses(json) {
     houseDesc.innerText = newHouse.description
 
     const reviewForm = document.createElement('form')
+    reviewForm.dataset.id = newHouse.id
+    reviewForm.setAttribute('class', 'reviewForm')
     const nameInput = document.createElement('input')
     nameInput.setAttribute('placeholder', 'Your Name:')
     const bodyInput = document.createElement('textarea')
@@ -55,8 +57,23 @@ function renderHouses(json) {
     newHouseDiv.appendChild(reviewForm)
     houseDiv.appendChild(newHouseDiv)
 
+    reviewForm.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch('http://localhost:3000/api/haunted_houses', {
+        method: "POST",
+        body: JSON.stringify({name: e.target[0].value, body: e.target[1].value, haunted_house_id: 0}),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+      console.log(res)
+    })
+    })
 
   })
 
 }
+
 })
