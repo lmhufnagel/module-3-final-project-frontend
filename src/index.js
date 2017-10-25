@@ -26,6 +26,22 @@ function renderHouses(json) {
     houseImg.setAttribute('height', 200)
     houseImg.setAttribute('width', 350)
 
+    const houseScareRating = document.createElement('div')
+    if(newHouse.scareFactor() === 1) {
+      houseScareRating.innerHTML = `<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30">`
+    } else if (newHouse.scareFactor() === 2) {
+      houseScareRating.innerHTML = `<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30">`
+    } else if (newHouse.scareFactor() === 3) {
+      houseScareRating.innerHTML = `<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30">`
+    } else if (newHouse.scareFactor() === 4) {
+      houseScareRating.innerHTML = `<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30">`
+    } else if (newHouse.scareFactor() === 5) {
+      houseScareRating.innerHTML = `<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30"><img src="stylesheets/skull2.png" width="30" height="30">
+      <img src="stylesheets/skull2.png" width="30" height="30">`
+    } else {
+      houseScareRating.innerHTML = "This attraction has no rating yet! Be the first to write a review!"
+    }
+
     const houseDesc = document.createElement('p')
     houseDesc.innerText = newHouse.description
 
@@ -90,6 +106,7 @@ function renderHouses(json) {
     iframeDiv.innerHTML = `<iframe width="540" height="405" frameborder="0" style="border:0" src='${iframeURL}' allowfullscreen> </iframe>`
     newHouseDiv.appendChild(houseTitle)
     newHouseDiv.appendChild(houseImg)
+    newHouseDiv.appendChild(houseScareRating)
     newHouseDiv.appendChild(houseDesc)
     newHouseDiv.appendChild(reviewForm)
     newHouseDiv.appendChild(iframeDiv)
