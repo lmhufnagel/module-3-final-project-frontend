@@ -51,10 +51,18 @@ function renderHouses(json) {
     // const reviewBody =
 
 
+    const iframeDiv = document.createElement('div')
+    const fixedLocation = newHouse.location.split(" ").join("+")
+    const iframeURL = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCatqH_xgBBnxAdoAvlkNdLRdTz4Go8JxU&q=" + fixedLocation
+
+    iframeDiv.innerHTML = `<iframe width="540" height="405" frameborder="0" style="border:0" src='${iframeURL}' allowfullscreen> </iframe>`
+    console.log(iframeDiv.innerHTML)
+
     newHouseDiv.appendChild(houseTitle)
     newHouseDiv.appendChild(houseImg)
     newHouseDiv.appendChild(houseDesc)
     newHouseDiv.appendChild(reviewForm)
+    newHouseDiv.appendChild(iframeDiv)
     houseDiv.appendChild(newHouseDiv)
 
     reviewForm.addEventListener('submit', e => {
