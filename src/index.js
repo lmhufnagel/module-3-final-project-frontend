@@ -78,8 +78,13 @@ function renderHouses(json) {
         .then(json => {
           json.reviews.forEach(review => {
             const reviewtag = document.createElement('p')
-            reviewtag.innerHTML = `${review.name} <br> ${review.body}`
+            const reviewBody = document.createElement('p')
+            reviewtag.setAttribute("class", "stylename")
+            reviewBody.setAttribute("class", "stylebody")
+            reviewtag.innerHTML = `${review.name} says:`
+            reviewBody.innerHTML = `${review.body}`
             newHouseDiv.appendChild(reviewtag)
+            newHouseDiv.appendChild(reviewBody)
             showReviewsButton.style.display = 'none'
           })
         })
