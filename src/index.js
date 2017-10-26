@@ -14,24 +14,33 @@ function renderHouses(json) {
     const newHouse = new HauntedHouse(house.id, house.name, house.description, house.location, house.image, house.reviews)
     const portfolioItem = document.createElement('div')
     portfolioItem.setAttribute('class', 'col-lg-6 portfolio-item')
-    portfolioItem.innerHTML = `<div class="card h-100" height="200" width="150">
-            <a href="#"><img class="card-img-top" height="300" width="200" src="${newHouse.image}" alt=""></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">${newHouse.name}</a>
+    portfolioItem.innerHTML = `<div data-id="card${newHouse.id}" class="card h-100" height="200" width="150">
+            <a href="#"><img data-id="card${newHouse.id}" class="card-img-top" height="300" width="200" src="${newHouse.image}" alt=""></a>
+            <div data-id="card${newHouse.id}" class="card-body">
+              <h4 data-id="card${newHouse.id}" class="card-title">
+                <a href="#" data-id="card${newHouse.id}">${newHouse.name}</a>
               </h4>
-              <p class="card-text">${newHouse.description}</p>
+              <p data-id="card${newHouse.id}" class="card-text">${newHouse.description}</p><br>
+
             </div>
           </div>`
     const rows = document.getElementById('rowDiv')
     rows.appendChild(portfolioItem)
 
   })
+  const cardDiv = document.getElementsByClassName("card h-100")
+  const cardDivArray = Array.from(cardDiv)
+  cardDivArray.forEach(card => {
+    card.addEventListener("click", e =>{
+      console.log(e);
+    })
+  })
 }
+
 
 })
 
-// function renderHouses(json) {
+// function newPage(json) {
 //   json.forEach(house => {
 //
 //     const newHouse = new HauntedHouse(house.id, house.name, house.description, house.location, house.image, house.reviews)

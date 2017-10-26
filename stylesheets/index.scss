@@ -1,6 +1,8 @@
 .fullpage {
   background-image: url(forest.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .twocolumns {
@@ -10,6 +12,7 @@
 
 body {
   padding-top: 54px;
+
 }
 
 @media (min-width: 992px) {
@@ -20,6 +23,8 @@ body {
 
 .portfolio-item {
   margin-bottom: 30px;
+  padding-left: 54px;
+  padding-right: 54px;
 }
 
 .pagination {
@@ -58,5 +63,13 @@ body {
   background-size: 30px 30px;
   transition: opacity 0.2s linear;
 }
+
+#header {
+   font-family: 'Metal Mania';
+   color:  #cc0000;
+   font-weight: normal;
+   font-size: 70px;
+   text-align: center;
+ }
 
 .rating > label:hover:before,  .rating > label:hover ~ label:before,  .rating:not(:hover) > :checked ~ label:before { opacity: 1; }
