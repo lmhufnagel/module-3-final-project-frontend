@@ -5,6 +5,11 @@
   background-attachment: fixed;
 }
 
+.btn-padding {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
 .showDiv {
   background-color: #89817F;
   width: 700px;
@@ -70,6 +75,13 @@ body {
   background: url('skull2.png');
   background-size: 30px 30px;
   transition: opacity 0.2s linear;
+}
+
+.scaryfont {
+  font-family: 'Metal Mania';
+  font-weight: normal;
+  font-size: 40px;
+  text-align: center;
 }
 
 #header {
