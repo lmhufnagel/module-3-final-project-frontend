@@ -1,3 +1,4 @@
+
 class HauntedHouse {
 
   constructor(id, name, description, location, image, reviews){
@@ -7,6 +8,7 @@ class HauntedHouse {
     this.location = location
     this.image = image
     this.reviews = reviews
+    HauntedHouse.all.push(this)
   }
 
   scareFactor(){
@@ -21,3 +23,5 @@ class HauntedHouse {
   // let all = []
 
 }
+
+HauntedHouse.all = []
