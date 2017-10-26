@@ -109,23 +109,25 @@ function renderHouses(json) {
         const starSpan = document.createElement('span')
         starSpan.setAttribute('class', 'rating')
         starSpan.innerHTML = `<input id="house${houseObj.id}rating5" type="radio" name="rating" value="5">
-        <label for="house${houseObj.id}rating5">5</label>
+        <label for="house${houseObj.id}rating5"></label>
         <input id="house${houseObj.id}rating4" type="radio" name="rating" value="4">
-        <label for="house${houseObj.id}rating4">4</label>
+        <label for="house${houseObj.id}rating4"></label>
         <input id="house${houseObj.id}rating3" type="radio" name="rating" value="3">
-        <label for="house${houseObj.id}rating3">3</label>
+        <label for="house${houseObj.id}rating3"></label>
         <input id="house${houseObj.id}rating2" type="radio" name="rating" value="2" >
-        <label for="house${houseObj.id}rating2">2</label>
+        <label for="house${houseObj.id}rating2"></label>
         <input id="house${houseObj.id}rating1" type="radio" name="rating" value="1">
-        <label for="house${houseObj.id}rating1">1</label>`
-        reviewForm.appendChild(starSpan)
-        reviewForm.appendChild(br5)
+        <label for="house${houseObj.id}rating1"></label>`
+
+
         reviewForm.appendChild(nameInput)
         reviewForm.appendChild(br1)
         reviewForm.appendChild(br2)
         reviewForm.appendChild(bodyInput)
         reviewForm.appendChild(br3)
         reviewForm.appendChild(br4)
+        reviewForm.appendChild(starSpan)
+        reviewForm.appendChild(br5)
         reviewForm.appendChild(reviewSubmit)
         newHouseDiv.appendChild(reviewForm)
         reviewForm.addEventListener('submit', e => {
