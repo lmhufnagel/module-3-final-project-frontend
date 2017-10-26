@@ -3,6 +3,30 @@
   background-size: cover;
 }
 
+.twocolumns {
+  column-count: 2;
+  column-gap: 40px;
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.pagination {
+  margin-bottom: 30px;
+}
+
+
 .rating {
   overflow: hidden;
   vertical-align: bottom;
