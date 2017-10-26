@@ -68,14 +68,13 @@ function renderHouses(json) {
       showReviewsButton.dataset.id = houseObj.id
 
       showReviewsButton.addEventListener('click', e => {
-        fetch(`http://localhost:3000/api/haunted_houses/${reviewForm.dataset.id}`)
+        fetch(`http://localhost:3000/api/haunted_houses/${showReviewsButton.dataset.id}`)
         .then(res => res.json())
         .then(json => {
           json.reviews.forEach(review => {
             const reviewtag = document.createElement('p')
             reviewtag.innerHTML = `${review.name} <br> ${review.body}`
-            const divPointer = document.getElementById(`div-${reviewForm.dataset.id}`)
-            divPointer.appendChild(reviewtag)
+            newHouseDiv.appendChild(reviewtag)
             showReviewsButton.style.display = 'none'
           })
         })
