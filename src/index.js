@@ -43,6 +43,7 @@ function renderHouses(json) {
       houseImg.setAttribute('width', 350)
       const houseInst = HauntedHouse.all.find(house => house.id === parseInt(e.target.dataset.id))
       const houseScareRating = document.createElement('div')
+
       if(houseInst.scareFactor() === 1) {
         houseScareRating.innerHTML = `<b>Scare Factor: </b><img src="stylesheets/skull2.png" width="30" height="30">`
       } else if (houseInst.scareFactor() === 2) {
@@ -60,45 +61,10 @@ function renderHouses(json) {
       const houseDesc = document.createElement('p')
       houseDesc.innerText = houseObj.description
 
-      const reviewForm = document.createElement('form')
-      reviewForm.dataset.id = houseObj.id
-      reviewForm.setAttribute('class', 'reviewForm')
-      const nameInput = document.createElement('input')
-      nameInput.setAttribute('placeholder', 'Your Name:')
-      const bodyInput = document.createElement('textarea')
-       bodyInput.setAttribute('placeholder', 'Your Review:')
-      const br1 = document.createElement('br')
-      const br2 = document.createElement('br')
-      const br3 = document.createElement('br')
-      const br4 = document.createElement('br')
-      const br5 = document.createElement('br')
-      const reviewSubmit = document.createElement('input')
-      reviewSubmit.setAttribute('type', 'submit')
-      const starSpan = document.createElement('span')
-      starSpan.setAttribute('class', 'rating')
-      starSpan.innerHTML = `<input id="house${houseObj.id}rating5" type="radio" name="rating" value="5">
-      <label for="house${houseObj.id}rating5">5</label>
-      <input id="house${houseObj.id}rating4" type="radio" name="rating" value="4">
-      <label for="house${houseObj.id}rating4">4</label>
-      <input id="house${houseObj.id}rating3" type="radio" name="rating" value="3">
-      <label for="house${houseObj.id}rating3">3</label>
-      <input id="house${houseObj.id}rating2" type="radio" name="rating" value="2" >
-      <label for="house${houseObj.id}rating2">2</label>
-      <input id="house${houseObj.id}rating1" type="radio" name="rating" value="1">
-      <label for="house${houseObj.id}rating1">1</label>`
-      reviewForm.appendChild(starSpan)
-      reviewForm.appendChild(br5)
-      reviewForm.appendChild(nameInput)
-      reviewForm.appendChild(br1)
-      reviewForm.appendChild(br2)
-      reviewForm.appendChild(bodyInput)
-      reviewForm.appendChild(br3)
-      reviewForm.appendChild(br4)
-      reviewForm.appendChild(reviewSubmit)
-
 
       const showReviewsButton = document.createElement("button")
-      showReviewsButton.innerText = "Reviews"
+      showReviewsButton.setAttribute("class", "btn blue-gradient btn-rounded")
+      showReviewsButton.innerText = "Read all Reviews"
       showReviewsButton.dataset.id = houseObj.id
 
       showReviewsButton.addEventListener('click', e => {
@@ -115,6 +81,11 @@ function renderHouses(json) {
         })
       })
 
+      const writeReviewButton = document.createElement("button")
+      writeReviewButton.setAttribute("class", "btn blue-gradient btn-rounded")
+      writeReviewButton.innerText = "Write a Review"
+      writeReviewButton.dataset.id = houseObj.id
+
       const iframeDiv = document.createElement('div')
       const fixedLocation = houseObj.location.split(" ").join("+")
       const iframeURL = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCatqH_xgBBnxAdoAvlkNdLRdTz4Go8JxU&q=" + fixedLocation
@@ -123,38 +94,77 @@ function renderHouses(json) {
       newHouseDiv.appendChild(houseImg)
       newHouseDiv.appendChild(houseScareRating)
       newHouseDiv.appendChild(houseDesc)
-      newHouseDiv.appendChild(reviewForm)
+      // newHouseDiv.appendChild(reviewForm)
       newHouseDiv.appendChild(iframeDiv)
       newHouseDiv.appendChild(showReviewsButton)
+      newHouseDiv.appendChild(writeReviewButton)
       houseDiv.appendChild(newHouseDiv)
 
 
-      reviewForm.addEventListener('submit', e => {
-        e.preventDefault()
-        let counter = 0
-        const targetArr = Array.from(e.target)
-        const ratingCounters = targetArr.slice(0,5)
-        ratingCounters.forEach(tinydot => {
-          if (tinydot.checked === true) {
-            counter = tinydot.value
-          }
-        })
-        fetch('http://localhost:3000/api/reviews', {
-          method: "POST",
-          body: JSON.stringify({name: e.target[5].value, body: e.target[6].value, rating: counter, haunted_house_id: reviewForm.dataset.id}),
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-          }
-      })
-      reviewForm.style.display = "none"
+
       })
     })
-  })
+
 }
 
 
 })
+
+// const reviewForm = document.createElement('form')
+// reviewForm.dataset.id = houseObj.id
+// reviewForm.setAttribute('class', 'reviewForm')
+// const nameInput = document.createElement('input')
+// nameInput.setAttribute('placeholder', 'Your Name:')
+// const bodyInput = document.createElement('textarea')
+//  bodyInput.setAttribute('placeholder', 'Your Review:')
+// const br1 = document.createElement('br')
+// const br2 = document.createElement('br')
+// const br3 = document.createElement('br')
+// const br4 = document.createElement('br')
+// const br5 = document.createElement('br')
+// const reviewSubmit = document.createElement('input')
+// reviewSubmit.setAttribute('type', 'submit')
+// const starSpan = document.createElement('span')
+// starSpan.setAttribute('class', 'rating')
+// starSpan.innerHTML = `<input id="house${houseObj.id}rating5" type="radio" name="rating" value="5">
+// <label for="house${houseObj.id}rating5">5</label>
+// <input id="house${houseObj.id}rating4" type="radio" name="rating" value="4">
+// <label for="house${houseObj.id}rating4">4</label>
+// <input id="house${houseObj.id}rating3" type="radio" name="rating" value="3">
+// <label for="house${houseObj.id}rating3">3</label>
+// <input id="house${houseObj.id}rating2" type="radio" name="rating" value="2" >
+// <label for="house${houseObj.id}rating2">2</label>
+// <input id="house${houseObj.id}rating1" type="radio" name="rating" value="1">
+// <label for="house${houseObj.id}rating1">1</label>`
+// reviewForm.appendChild(starSpan)
+// reviewForm.appendChild(br5)
+// reviewForm.appendChild(nameInput)
+// reviewForm.appendChild(br1)
+// reviewForm.appendChild(br2)
+// reviewForm.appendChild(bodyInput)
+// reviewForm.appendChild(br3)
+// reviewForm.appendChild(br4)
+// reviewForm.appendChild(reviewSubmit)
+
+// reviewForm.addEventListener('submit', e => {
+//   e.preventDefault()
+//   let counter = 0
+//   const targetArr = Array.from(e.target)
+//   const ratingCounters = targetArr.slice(0,5)
+//   ratingCounters.forEach(tinydot => {
+//     if (tinydot.checked === true) {
+//       counter = tinydot.value
+//     }
+//   })
+//   fetch('http://localhost:3000/api/reviews', {
+//     method: "POST",
+//     body: JSON.stringify({name: e.target[5].value, body: e.target[6].value, rating: counter, haunted_house_id: reviewForm.dataset.id}),
+//     headers: {
+//       "Accept": "application/json",
+//       "Content-Type": "application/json"
+//     }
+// })
+// reviewForm.style.display = "none"
 
 // function newPage(json) {
 //   json.forEach(house => {
