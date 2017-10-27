@@ -18,7 +18,7 @@ function renderHouses(json) {
             <a href="#"><img data-id="${newHouse.id}" class="card-img-top" height="300" width="200" src="${newHouse.image}" alt=""></a>
             <div data-id="${newHouse.id}" class="card-body">
               <h4 data-id="${newHouse.id}" class="card-title">
-                <a href="#" data-id="${newHouse.id}">${newHouse.name}</a>
+                <a href="#" data-id="${newHouse.id}" class="card-name">${newHouse.name}</a>
               </h4>
               <p data-id="${newHouse.id}" class="card-text">${newHouse.description}</p><br>
 

@@ -138,6 +138,26 @@ body {
  text-decoration: none;
 }
 
+.card-name {
+  font-family: 'Metal Mania';
+  color:  #800000;
+  font-weight: normal;
+  font-size: 40px;
+
+}
+
+.card-name:hover {
+  color: black
+}
+.card-text {
+  font-family: 'Creepster';
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.card-body {
+  background-color: #89817F;
+}
 
 .scaryfont {
   font-family: 'Metal Mania';
@@ -167,7 +187,7 @@ body {
    font-family: 'Metal Mania';
    color:  #cc0000;
    font-weight: normal;
-   font-size: 70px;
+   font-size: 90px;
    text-align: center;
  }
 
