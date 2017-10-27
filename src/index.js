@@ -172,6 +172,9 @@ function renderHouses(json) {
       newHouseDiv.appendChild(writeReviewButton)
       houseDiv.appendChild(newHouseDiv)
       })
+      // Some sort of event listener here?
+      // card.addEventListener('mouseover', e => card.style.opacity = 0.5)
+      // card.addEventListener('mouseout', e => card.style.opacity = 1)
     })
 
 }
