@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   getHouses()
 
 function getHouses() {
-  fetch('http://localhost:3000/api/haunted_houses')
+  fetch('https://serene-mesa-27697.herokuapp.com/api/haunted_houses')
   .then(res => res.json())
   .then(json => renderHouses(json))
 }
@@ -73,7 +73,7 @@ function renderHouses(json) {
       showReviewsButton.dataset.id = houseObj.id
 
       showReviewsButton.addEventListener('click', e => {
-        fetch(`http://localhost:3000/api/haunted_houses/${showReviewsButton.dataset.id}`)
+        fetch(`https://serene-mesa-27697.herokuapp.com/api/haunted_houses/${showReviewsButton.dataset.id}`)
         .then(res => res.json())
         .then(json => {
           json.reviews.forEach(review => {
@@ -146,7 +146,7 @@ function renderHouses(json) {
               counter = tinydot.value
             }
           })
-          fetch('http://localhost:3000/api/reviews', {
+          fetch('https://serene-mesa-27697.herokuapp.com/api/reviews', {
             method: "POST",
             body: JSON.stringify({name: e.target[0].value, body: e.target[1].value, rating: counter, haunted_house_id: reviewForm.dataset.id}),
             headers: {
