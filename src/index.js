@@ -68,7 +68,7 @@ function renderHouses(json) {
 
 
       const showReviewsButton = document.createElement("button")
-      showReviewsButton.setAttribute("class", "btn blue-gradient btn-rounded btn-padding")
+      showReviewsButton.setAttribute("class", "showrevbtn")
       showReviewsButton.innerText = "Read all Reviews"
       showReviewsButton.dataset.id = houseObj.id
 
@@ -91,7 +91,7 @@ function renderHouses(json) {
       })
 
       const writeReviewButton = document.createElement("button")
-      writeReviewButton.setAttribute("class", "btn blue-gradient btn-rounded btn-padding")
+      writeReviewButton.setAttribute("class", "writerevbtn")
       writeReviewButton.innerText = "Write a Review"
       writeReviewButton.dataset.id = houseObj.id
 
@@ -111,9 +111,10 @@ function renderHouses(json) {
         const br5 = document.createElement('br')
         const reviewSubmit = document.createElement('input')
         reviewSubmit.setAttribute('type', 'submit')
+        reviewSubmit.setAttribute('class', 'writereview')
         const starSpan = document.createElement('span')
         starSpan.setAttribute('class', 'rating')
-        starSpan.innerHTML = `<input id="house${houseObj.id}rating5" type="radio" name="rating" value="5">
+        starSpan.innerHTML = `Scare Factor: <input id="house${houseObj.id}rating5" type="radio" name="rating" value="5">
         <label for="house${houseObj.id}rating5"></label>
         <input id="house${houseObj.id}rating4" type="radio" name="rating" value="4">
         <label for="house${houseObj.id}rating4"></label>
