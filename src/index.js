@@ -148,7 +148,7 @@ function renderHouses(json) {
           })
           fetch('http://localhost:3000/api/reviews', {
             method: "POST",
-            body: JSON.stringify({name: e.target[5].value, body: e.target[6].value, rating: counter, haunted_house_id: reviewForm.dataset.id}),
+            body: JSON.stringify({name: e.target[0].value, body: e.target[1].value, rating: counter, haunted_house_id: reviewForm.dataset.id}),
             headers: {
               "Accept": "application/json",
               "Content-Type": "application/json"
